@@ -1,0 +1,616 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rangers Public School Sadiqabad</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Modern, Friendly Theme Variables */
+        :root {
+            --primary: #008080; /* Friendly Teal */
+            --primary-light: #00b3b3;
+            --secondary: #FF7F50; /* Bright Coral/Orange */
+            --bg-color: #F0F8FF; /* Soft Alice Blue */
+            --text-dark: #333333;
+            --text-gray: #666666;
+            --white: #FFFFFF;
+            --card-radius: 20px;
+            --shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-dark);
+            line-height: 1.7;
+        }
+
+        /* Header & Navigation */
+        header {
+            background-color: var(--white);
+            padding: 15px 5%;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .logo {
+            color: var(--primary);
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            white-space: nowrap; /* Keeps logo from breaking onto two lines */
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 10px; /* Reduced gap to ensure everything fits */
+            list-style: none;
+            flex-wrap: nowrap; /* Forces all links to stay on a single line */
+            justify-content: center;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem; /* Slightly smaller text to help them fit */
+            transition: var(--transition);
+            padding: 5px 8px;
+            border-radius: 10px;
+            white-space: nowrap; /* Keeps words inside links together */
+        }
+
+        .nav-links a:hover {
+            background-color: var(--primary-light);
+            color: var(--white);
+        }
+
+        .menu-btn {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+        }
+
+        .menu-btn span {
+            width: 25px;
+            height: 3px;
+            background-color: var(--primary);
+            transition: 0.3s;
+        }
+
+        /* Welcome Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: var(--white);
+            text-align: center;
+            padding: 100px 20px;
+            border-bottom-left-radius: 50px;
+            border-bottom-right-radius: 50px;
+            margin-bottom: 50px;
+            box-shadow: var(--shadow);
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Layout */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section-spacer {
+            padding: 60px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            color: var(--primary);
+            margin-bottom: 40px;
+        }
+
+        /* Principal Message */
+        .message-box {
+            background: var(--white);
+            padding: 40px;
+            border-radius: var(--card-radius);
+            box-shadow: var(--shadow);
+            border-top: 8px solid var(--secondary);
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .message-box p {
+            font-size: 1.1rem;
+            color: var(--text-gray);
+            font-style: italic;
+        }
+
+        /* Grids for Cards */
+        .grid-layout {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        /* Colorful Cards */
+        .card {
+            background: var(--white);
+            padding: 30px 20px;
+            border-radius: var(--card-radius);
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: var(--transition);
+            border: 2px solid transparent;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            border-color: var(--secondary);
+        }
+
+        .icon-circle {
+            width: 70px;
+            height: 70px;
+            background: var(--bg-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px auto;
+            font-size: 2rem;
+            color: var(--primary);
+        }
+
+        .card h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        .card ul {
+            list-style: none;
+            text-align: left;
+            margin-top: 15px;
+        }
+
+        .card ul li {
+            margin-bottom: 8px;
+            color: var(--text-gray);
+        }
+
+        /* Step Boxes (Admissions) */
+        .step-box {
+            background: var(--white);
+            padding: 30px;
+            border-radius: var(--card-radius);
+            text-align: center;
+            position: relative;
+            box-shadow: var(--shadow);
+        }
+
+        .step-num {
+            background: var(--secondary);
+            color: var(--white);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin: 0 auto 15px auto;
+        }
+
+        /* Calendar Table */
+        .calendar-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--white);
+            border-radius: var(--card-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .calendar-table th, .calendar-table td {
+            padding: 20px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+
+        .calendar-table th {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+
+        .month-tag {
+            background: var(--secondary);
+            color: var(--white);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: 600;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 50px 20px 20px;
+            text-align: center;
+            border-top-left-radius: 50px;
+            border-top-right-radius: 50px;
+            margin-top: 50px;
+        }
+
+        footer h2 {
+            color: var(--secondary);
+            margin-bottom: 20px;
+        }
+
+        .management-box {
+            background: rgba(255,255,255,0.1);
+            padding: 20px;
+            border-radius: var(--card-radius);
+            display: inline-block;
+            margin: 30px 0;
+        }
+
+        .management-names {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 15px;
+        }
+
+        .name-badge {
+            background: var(--white);
+            color: var(--primary);
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-weight: 600;
+        }
+
+        /* Animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 1000px) {
+            .menu-btn { display: flex; }
+            .nav-links {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--white);
+                flex-direction: column;
+                padding: 0;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease-out;
+                box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+                /* Resetting flex settings for the mobile menu */
+                flex-wrap: wrap; 
+                gap: 0;
+            }
+            .nav-links.open { max-height: 500px; padding: 15px 0; }
+            .nav-links a { text-align: center; margin: 5px 20px; display: block; white-space: normal;}
+            .hero h1 { font-size: 2rem; }
+            .hero { padding: 60px 20px; border-radius: 0 0 30px 30px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="#" class="logo">🏫 RPS Sadiqabad</a>
+        <div class="menu-btn" id="menuBtn">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#about">About</a></li>
+            <li><a href="#classes">Classes</a></li>
+            <li><a href="#events">Events</a></li>
+            <li><a href="#admissions">Admissions</a></li>
+            <li><a href="#rules">Rules</a></li>
+            <li><a href="#calendar">Calendar</a></li>
+            <li><a href="#ptm">PTM</a></li>
+            <li><a href="#facilities">Facilities</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </header>
+
+    <div class="hero">
+        <div class="reveal">
+            <h1>Welcome to Rangers Public School</h1>
+            <p>A happy place where children learn, grow, and become bright future leaders. Learning is easy and fun with us!</p>
+        </div>
+    </div>
+
+    <div class="container">
+
+        <div class="section-spacer" id="about">
+            <h2 class="section-title">Principal's Message</h2>
+            <div class="message-box reveal">
+                <h3>Message from the Principal</h3>
+                <p>
+                    "Education is not just about reading books. It is about teaching children to be good humans. At Rangers Public School Sadiqabad, we make sure every student gets good teaching, learns good manners, and uses computers. Join us to give your child a successful future!"
+                </p>
+            </div>
+        </div>
+
+        <div class="section-spacer" id="classes">
+            <h2 class="section-title">Our Classes</h2>
+            <div class="grid-layout reveal">
+                <div class="card">
+                    <div class="icon-circle">🧸</div>
+                    <h3>Junior Classes</h3>
+                    <p>(Playgroup to Class 5)</p>
+                    <p style="color: var(--text-gray); font-size: 0.9rem;">We teach basic ideas in a fun way so kids love to learn.</p>
+                    <ul>
+                        <li>✔ Easy English & ABCs</li>
+                        <li>✔ Simple Math & Counting</li>
+                        <li>✔ Good Manners & Stories</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <div class="icon-circle">🎒</div>
+                    <h3>Middle Classes</h3>
+                    <p>(Class 6 to Class 8)</p>
+                    <p style="color: var(--text-gray); font-size: 0.9rem;">We get students ready for bigger subjects and smart thinking.</p>
+                    <ul>
+                        <li>✔ Science Experiments</li>
+                        <li>✔ Basic Computer Uses</li>
+                        <li>✔ Easy History Lessons</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <div class="icon-circle">🎓</div>
+                    <h3>Matric Classes</h3>
+                    <p>(Class 9 & 10)</p>
+                    <p style="color: var(--text-gray); font-size: 0.9rem;">We help students get top marks in their final board exams.</p>
+                    <ul>
+                        <li>✔ Science & Engineering</li>
+                        <li>✔ Computer Studies</li>
+                        <li>✔ Real Lab Practice</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-spacer" id="events">
+            <h2 class="section-title">Fun School Events</h2>
+            <div class="grid-layout reveal">
+                <div class="card">
+                    <div class="icon-circle">🎤</div>
+                    <h3>Speech Contests</h3>
+                    <p>Children learn to speak on stage without fear. We have English and Urdu speech days to make them confident leaders.</p>
+                </div>
+                <div class="card">
+                    <div class="icon-circle">🧠</div>
+                    <h3>Quiz Competitions</h3>
+                    <p>Fun question games about Science, Islam, and the World. This helps children think fast and learn new facts easily.</p>
+                </div>
+                <div class="card">
+                    <div class="icon-circle">🎭</div>
+                    <h3>Teblo (Drama Day)</h3>
+                    <p>Students act in short plays, wear colorful dresses, and sing national songs. It is a very happy day for parents and kids!</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-spacer" id="admissions">
+            <h2 class="section-title">How to Take Admission</h2>
+            <div class="grid-layout reveal">
+                <div class="step-box">
+                    <div class="step-num">1</div>
+                    <h3>Get the Form</h3>
+                    <p>Visit the school office and take the admission form.</p>
+                </div>
+                <div class="step-box">
+                    <div class="step-num">2</div>
+                    <h3>Easy Test</h3>
+                    <p>The child gives a very simple test based on their age.</p>
+                </div>
+                <div class="step-box">
+                    <div class="step-num">3</div>
+                    <h3>Short Meeting</h3>
+                    <p>Parents talk with the Principal in a friendly meeting.</p>
+                </div>
+                <div class="step-box">
+                    <div class="step-num">4</div>
+                    <h3>Pay & Join</h3>
+                    <p>Pay the fee and your child is ready to start classes!</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-spacer" id="rules">
+            <h2 class="section-title">Simple School Rules</h2>
+            <div class="grid-layout reveal">
+                <div class="card">
+                    <h3>✅ Good Things to Do</h3>
+                    <ul>
+                        <li>Come to school on time.</li>
+                        <li>Wear a clean, proper uniform.</li>
+                        <li>Respect teachers and friends.</li>
+                        <li>Learn from our painted wall charts.</li>
+                        <li>Stay quiet while the teacher talks.</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>❌ Things Not Allowed</h3>
+                    <ul>
+                        <li>No fighting or bad words.</li>
+                        <li>No mobile phones in school.</li>
+                        <li>Do not break school things.</li>
+                        <li>Do not copy in exams.</li>
+                        <li>Do not take many days off.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-spacer" id="calendar">
+            <h2 class="section-title">School Calendar</h2>
+            <table class="calendar-table reveal">
+                <tr>
+                    <th>Month</th>
+                    <th>What Happens?</th>
+                </tr>
+                <tr>
+                    <td><span class="month-tag">March / April</span></td>
+                    <td><b>New Class Starts:</b> Kids get new books and meet new teachers.</td>
+                </tr>
+                <tr>
+                    <td><span class="month-tag">September</span></td>
+                    <td><b>Mid-Term Exams:</b> First tests to see how much children have learned.</td>
+                </tr>
+                <tr>
+                    <td><span class="month-tag">November</span></td>
+                    <td><b>Sports Week:</b> Running, playing cricket, and winning prizes!</td>
+                </tr>
+                <tr>
+                    <td><span class="month-tag">December</span></td>
+                    <td><b>Fun Events:</b> Teblo, Quiz, and Speech competitions happen here.</td>
+                </tr>
+                <tr>
+                    <td><span class="month-tag">February</span></td>
+                    <td><b>Final Exams:</b> Big exams at the end of the year, then a result day.</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="section-spacer" id="ptm">
+            <h2 class="section-title">Parents Meeting (PTM)</h2>
+            <div class="message-box reveal">
+                <div class="icon-circle" style="width: 50px; height: 50px; font-size: 1.5rem;">🤝</div>
+                <p style="color: var(--text-dark); margin-bottom: 15px;">
+                    <b>Why meet teachers?</b> It helps us fix your child's study problems together. We call parents after every big test (May, September, and March) to share the result card. Please bring your child in a clean uniform on PTM day!
+                </p>
+            </div>
+        </div>
+
+        <div class="section-spacer" id="facilities">
+            <h2 class="section-title">What We Have For You</h2>
+            <div class="grid-layout reveal">
+                <div class="card">
+                    <div class="icon-circle">🔬</div>
+                    <h3>Science Room</h3>
+                    <p>A safe place to do science experiments.</p>
+                </div>
+                <div class="card">
+                    <div class="icon-circle">💻</div>
+                    <h3>Computer Room</h3>
+                    <p>Learn typing and internet on good computers.</p>
+                </div>
+                <div class="card">
+                    <div class="icon-circle">📚</div>
+                    <h3>Library</h3>
+                    <p>A quiet room full of nice story books.</p>
+                </div>
+                <div class="card">
+                    <div class="icon-circle">⚽</div>
+                    <h3>Play Area</h3>
+                    <p>Big ground for sports and staying healthy.</p>
+                </div>
+            </div>
+        </div>
+
+    </div> <footer id="contact">
+        <h2>Contact Us</h2>
+        <p>📍 Rangers Public School, Sadiqabad, Punjab, Pakistan</p>
+        <p>📞 Phone Office: +92 300 1234567</p>
+        <p>✉ Email: info@rps-sadiqabad.edu.pk</p>
+        
+        <div class="management-box">
+            <h3>School Management</h3>
+            <div class="management-names">
+                <div class="name-badge">Administrator: Ms. Tehmina</div>
+                <div class="name-badge">Principal: Mr. Hamad</div>
+                <div class="name-badge">Computer Head: Mr. Uzair</div>
+            </div>
+        </div>
+        
+        <div style="font-size: 0.9rem; margin-top: 20px;">
+            &copy; 2026 Rangers Public School Sadiqabad. All Rights Reserved.
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Logic
+        const menuBtn = document.getElementById('menuBtn');
+        const navLinks = document.getElementById('navLinks');
+
+        menuBtn.addEventListener('click', () => {
+            menuBtn.classList.toggle('open');
+            navLinks.classList.toggle('open');
+        });
+
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                menuBtn.classList.remove('open');
+                navLinks.classList.remove('open');
+            });
+        });
+
+        // Scroll Animation Logic
+        function checkReveal() {
+            const reveals = document.querySelectorAll('.reveal');
+            const windowHeight = window.innerHeight;
+            const revealPoint = 100;
+
+            reveals.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                if (elementTop < windowHeight - revealPoint) {
+                    element.classList.add('active');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', checkReveal);
+        window.addEventListener('load', checkReveal);
+    </script>
+</body>
+</html>
